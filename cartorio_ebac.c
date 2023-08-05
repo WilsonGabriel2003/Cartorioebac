@@ -6,7 +6,7 @@
 
 int registro()   //Função responsavel por cadastrar os usuarios
 {
-	//inicio crriação de variaveis/strings
+	//inicio da criação de variaveis/strings
 	char arquivo[40];                                      
 	char cpf[40];
 	char nome[40];
@@ -32,7 +32,6 @@ int registro()   //Função responsavel por cadastrar os usuarios
 	fprintf(file, "\n");
 	fclose(file);
 	
-	
 	printf("Digite o nome a ser cadastrado: ");
 	scanf("%s", nome);
 	
@@ -47,7 +46,6 @@ int registro()   //Função responsavel por cadastrar os usuarios
 	file = fopen(arquivo, "a");
 	fprintf(file, "\n");
 	fclose(file);
-	
 	
 	printf("Digite o sobrenome a ser cadastrado: ");
 	scanf("%s", sobrenome);
@@ -64,7 +62,6 @@ int registro()   //Função responsavel por cadastrar os usuarios
 	fprintf(file, "\n");
 	fclose(file);
 	
-	
 	printf("Digite o cargo a ser cadastrado: ");
 	scanf("%s", cargo);
 
@@ -79,12 +76,9 @@ int registro()   //Função responsavel por cadastrar os usuarios
 	file = fopen(arquivo, "a");
 	fprintf(file, "\n");
 	fclose(file);
-	
-	
-	system("pause");
-	
-}
 
+	system("pause");	
+}
 
 int consulta()       //Função responsavel por consultar os usuarios
 {
@@ -98,7 +92,6 @@ int consulta()       //Função responsavel por consultar os usuarios
 	FILE *file;
 	file = fopen(cpf,"r");
 	
-	
 	if(file == NULL)   //caso um cpf não existente seja digitado
 	{
 		printf("Usuário não localizado!\n");
@@ -106,7 +99,6 @@ int consulta()       //Função responsavel por consultar os usuarios
 	else
 		printf("Essas são as informações do usuário:\n\n");   //quando um usuario é detectado
 	
-
 	while(fgets(conteudo, 200, file) != NULL)     //usar a variavel conteudo
 	{
 		printf("%s", conteudo);
@@ -114,15 +106,12 @@ int consulta()       //Função responsavel por consultar os usuarios
 	}
 	
 	system("pause");
-	
 }
-
 
 int deletar()      //Função responsavel por deletar os usuarios
 {
 	char cpf[40];
 	int del = 0;
-	
 	
 	printf("Digite o cpf do usuário que deseja deletar: ");
 	scanf("%s", cpf);
@@ -157,12 +146,10 @@ int deletar()      //Função responsavel por deletar os usuarios
 			break;	
 			
 			default:
-				printf("Opção inválida.");
+			printf("Opção inválida.");
 		}
  	}
-	
-	system("pause");
-
+ 	system("pause");
 }
 
 int main()        //função com o menu
@@ -170,9 +157,10 @@ int main()        //função com o menu
 
 	int opcao=0; //Definindo variáveis
 	int laco=1;
+	int voltar=0;
 	
 	for(laco=1;laco=1;)
-	{
+	{	
 		system("cls");
 	
 		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
@@ -183,11 +171,9 @@ int main()        //função com o menu
 		printf("\t2 - Consultar nomes\n");
 		printf("\t3 - Deletar nomes\n\n");
 		printf("Esse Software é de livre uso dos alunos.\n\n");
-		printf("Selecione um dos menus acima: "); //fim do menu
+		printf("Selecione uma das opções acima: "); //fim do menu
 		
-	
 		scanf("%d", &opcao);
-	
 		system("cls");      //Serve para deletar os nomes
 		
 		switch(opcao)       //chamadas de funções
@@ -203,10 +189,37 @@ int main()        //função com o menu
 			case 3: 
 			deletar();
 			break;
-		
+			
+			case4:
+			return 0;
+			break;
 			
 			default:
 			printf("Essa opção não está disponível!\n");
+			system("pause");
+		}
+		system("cls");
+		
+		printf("Deseja voltar ao menu pruncipal?\n\n");
+		printf("\tPressione '1' para sim\t\tPressione '2' para encerrar o programa.\n\n");
+		printf("Selecione uma das opções acima: ");
+		
+		scanf("%d", &voltar);
+		system("cls");
+		
+		switch(voltar)
+		{
+			case 1:
+			printf("Você será direcionado ao menu principal.\n\n");
+			system("pause");
+			break;
+	
+			case 2:
+			return 0;
+			break;
+	
+			default:
+			printf("Opção indisponível.\n");	
 			system("pause");
 		}
 	}
