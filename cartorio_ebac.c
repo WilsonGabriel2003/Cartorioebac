@@ -190,10 +190,6 @@ int main()        //função com o menu
 			deletar();
 			break;
 			
-			case4:
-			return 0;
-			break;
-			
 			default:
 			printf("Essa opção não está disponível!\n");
 			system("pause");
