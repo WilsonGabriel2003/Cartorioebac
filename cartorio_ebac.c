@@ -12,7 +12,6 @@ int registro()   //Função responsavel por cadastrar os usuarios
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
-	int menu = 0;
 	
 	printf("Digite o CPF a ser cadastrado: ");
 	scanf("%s", cpf);
@@ -158,65 +157,78 @@ int main()        //função com o menu
 	int opcao=0; //Definindo variáveis
 	int laco=1;
 	int voltar=0;
+	char senhadigitada[]="a";
+	int comparacao;
 	
-	for(laco=1;laco=1;)
-	{	
-		system("cls");
+	setlocale(LC_ALL, "Portuguese");	 //Definindo a linguagem
+
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login de administrador.\n\nDigite a sua senha: ");
+	scanf("%s", senhadigitada);
 	
-		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	comparacao = strcmp(senhadigitada, "admin");
 	
-		printf("### Cartório da EBAC ###\n\n"); //Título
-		printf("Escolha a opção desejada do menu:\n\n");
-		printf("\t1 - Registrar nome\n");
-		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n");
-		printf("Esse Software é de livre uso dos alunos.\n\n");
-		printf("Selecione uma das opções acima: "); //fim do menu
+	if(comparacao == 0)
+	{
+		for(laco=1;laco=1;)
+		{		
+			system("cls");
+	
+			printf("### Cartório da EBAC ###\n\n"); //Título
+			printf("Escolha a opção desejada do menu:\n\n");
+			printf("\t1 - Registrar nome\n");
+			printf("\t2 - Consultar nomes\n");
+			printf("\t3 - Deletar nomes\n\n");
+			printf("Esse Software é de livre uso dos alunos.\n\n");
+			printf("Selecione uma das opções acima: "); //fim do menu
 		
-		scanf("%d", &opcao);
-		system("cls");      //Serve para deletar os nomes
+			scanf("%d", &opcao);
+			system("cls");      //Serve para deletar os nomes
 		
-		switch(opcao)       //chamadas de funções
-		{
-			case 1:
-			registro();
-			break;
+			switch(opcao)       //chamadas de funções
+			{
+				case 1:
+				registro();
+				break;
 			
-			case 2:
-			consulta();
-			break;
+				case 2:
+				consulta();
+				break;
 			
-			case 3: 
-			deletar();
-			break;
+				case 3: 
+				deletar();
+				break;
 			
-			default:
-			printf("Essa opção não está disponível!\n");
-			system("pause");
-		}
-		system("cls");
+				default:
+				printf("Essa opção não está disponível!\n");
+				system("pause");
+			}
+			
+			system("cls");
 		
-		printf("Deseja voltar ao menu pruncipal?\n\n");
-		printf("\tPressione '1' para sim\t\tPressione '2' para encerrar o programa.\n\n");
-		printf("Selecione uma das opções acima: ");
+			printf("Deseja voltar ao menu pruncipal?\n\n");
+			printf("\tPressione '1' para sim\t\tPressione '2' para encerrar o programa.\n\n");
+			printf("Selecione uma das opções acima: ");
 		
-		scanf("%d", &voltar);
-		system("cls");
+			scanf("%d", &voltar);
 		
-		switch(voltar)
-		{
-			case 1:
-			printf("Você será direcionado ao menu principal.\n\n");
-			system("pause");
-			break;
+			switch(voltar)
+			{
+				case 1:
+				printf("\nVocê será direcionado ao menu principal.\n\n");
+				system("pause");
+				break;
 	
-			case 2:
-			return 0;
-			break;
+				case 2:
+				return 0;
+				break;
 	
-			default:
-			printf("Opção indisponível.\n");	
-			system("pause");
-		}
+				default:
+				printf("\nOpção indisponível.\n");	
+				system("pause");
+			}
+		}	
 	}
+	else
+		printf("Senha incorreta!");
 }
